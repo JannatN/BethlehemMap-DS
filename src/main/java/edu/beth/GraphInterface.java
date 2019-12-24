@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface GraphInterface {
 	public int getNumberOfNodes();
-
+ 
 	public int getNumberOfEdges();
 
 	public Hashtable<Long, Node> getNodes();

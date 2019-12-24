@@ -12,6 +12,10 @@ public class Path {
 	private Geometry geometry = new Geometry();
 	private HashMap<String, String> properties = new HashMap<String, String>();
 
+	public Path() {
+		pathNodes = new ArrayList<Long>();
+	}
+
 	public void addProperties(String type, String value) {
 		properties.put(type, value);
 	}
@@ -38,23 +42,6 @@ public class Path {
 
 	public void setProperties(HashMap<String, String> properties) {
 		this.properties = properties;
-	}
-
-	public Path(int cost) {
-		pathNodes = new ArrayList<Long>();
-		this.cost = cost;
-	}
-
-	public Path(List<Long> pathNodes, int cost) {
-		pathNodes = new ArrayList<Long>();
-		this.cost = cost;
-		this.pathNodes = pathNodes;
-
-	}
-
-	public Path() {
-		pathNodes = new ArrayList<Long>();
-
 	}
 
 	public List<Long> getPathNodes() {

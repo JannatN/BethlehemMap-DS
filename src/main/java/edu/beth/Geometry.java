@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Geometry {
 	private String type = "LineString";
-	private List<List<Float>> coordinates = new ArrayList();
+	private List<List<Float>> coordinates = new ArrayList<List<Float>>();
 
 	public void addCoordinate(float lon, float lat) {
 		List<Float> innerListCoordinates = new ArrayList<Float>();

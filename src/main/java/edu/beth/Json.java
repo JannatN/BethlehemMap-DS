@@ -11,8 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class Json {
 	static ObjectMapper mapper = new ObjectMapper();
 
-	public String json(Graph graph, Path path) throws JsonProcessingException {
-		// Path p2 = new Path ();
+	public String toJson(Graph graph, Path path) throws JsonProcessingException {
 		Geometry geometry = new Geometry();
 		for (Long nodeId : path.getPathNodes()) {
 			Node node = graph.get(nodeId);

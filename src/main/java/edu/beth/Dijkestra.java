@@ -1,4 +1,3 @@
-
 package edu.beth;
 
 import java.util.ArrayList;
@@ -26,11 +25,11 @@ public class Dijkestra {
 		nodesHash.put(source, sourceSearchNode);
 		sourceSearchNode.setParent(-1);
 		pQueue.add(sourceSearchNode);
-		
+
 		while (!pQueue.isEmpty()) {
 			SearchNode currNode = pQueue.poll();
 			if (currNode.getNodeId() == destination) {
-				Path printpath = printpath(currNode);
+				Path printpath = generatePath(currNode);
 				return printpath;
 
 			}
@@ -62,15 +61,15 @@ public class Dijkestra {
 		return null;
 	}
 
-	private static Path printpath(SearchNode node) {
+	private static Path generatePath(SearchNode node) {
 		Path path = new Path();
 		List<Long> nodeIds = new ArrayList<Long>();
 		System.out.println("The path is : ");
 		Stack<SearchNode> searchNodesStack = new Stack<SearchNode>();
-		SearchNode dest = node;
-		while (dest != null) {
-			searchNodesStack.push(dest);
-			dest = nodesHash.get(dest.getParent());
+		SearchNode destination = node;
+		while (destination != null) {
+			searchNodesStack.push(destination);
+			destination = nodesHash.get(destination.getParent());
 		}
 		while (!searchNodesStack.isEmpty()) {
 			long nodeId = searchNodesStack.pop().getNodeId();

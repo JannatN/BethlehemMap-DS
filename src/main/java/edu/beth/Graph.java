@@ -43,25 +43,30 @@ public class Graph implements GraphInterface {
 		nodes.put(nodeId, node);
 		numberOfNodes++;
 	}
+	
+	public void addEdge(long source, long destination, double cost, double distance, boolean biDirectional)
+	{
+		addEdge(source, destination, cost, distance, biDirectional, "other");
+	}
 
-	public void addEdge(long source, long destination, double cost, double distance, boolean biDirectional) {
-		nodes.get(source).addEdge(new Edge(destination, cost, distance));
+	public void addEdge(long source, long destination, double cost, double distance, boolean biDirectional, String wayType) {
+		nodes.get(source).addEdge(new Edge(destination, cost, distance, wayType));
 		numberOfEdges++;
 
 		if (biDirectional) {
 			// if (!nodes.get(destination).equals(null)) {
-			nodes.get(destination).addEdge(new Edge(source, cost, distance));
+			nodes.get(destination).addEdge(new Edge(source, cost, distance, wayType));
 			numberOfEdges++;
 
 		}
 	}
 
-	public void addEdge(long source, long destination, boolean biDirectional) {
-		nodes.get(source).addEdge(new Edge(destination));
+	public void addEdge(long source, long destination, boolean biDirectional, String wayType) {
+		nodes.get(source).addEdge(new Edge(destination,wayType));
 		numberOfEdges++;
 
 		if (biDirectional) {
-			nodes.get(destination).addEdge(new Edge(source));
+			nodes.get(destination).addEdge(new Edge(source,wayType));
 			numberOfEdges++;
 
 		}
@@ -74,12 +79,6 @@ public class Graph implements GraphInterface {
 		return nodes.get(nodeId).getEdges();
 	}
 
-	public void edgesPrint(int j) {
-		for (int i = 0; i < getEdges(j).size(); i++) {
-			System.out.println(getEdges(j).get(i).getDestinationNodeId());
-
-		}
-	}
 
 	public Node get(Long nodeId) {
 		return nodes.get(nodeId);

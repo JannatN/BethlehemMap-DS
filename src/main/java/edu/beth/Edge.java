@@ -5,26 +5,38 @@ public class Edge {
 	private double cost;
 	private double distance;
 	private String name;
-
-	public Edge(long destinationNodeId, double cost, double distance, String name) {
+	private String wayType;
+	
+	public Edge(long destinationNodeId, double cost, double distance, String name, String wayType) {
 		super();
 		this.destinationNodeId = destinationNodeId;
 		this.cost = cost;
 		this.distance = distance;
 		this.name = name;
+		this.wayType= wayType;
 	}
 
-	public Edge(long dest) {
-
+	public Edge(long dest, String wayType) {
+		this.wayType= wayType;
 	}
 
-	public Edge(long destination, double timeInSec, double distance2) {
+	public Edge(long destination, double timeInSec, double distance2, String wayType) {
 		this.destinationNodeId = destination;
 		this.cost = timeInSec;
 		this.distance = distance2;
-
+		this.wayType= wayType;
 	}
 
+	public String getWayType()
+	{
+		return wayType;
+	}
+	
+	public void setWayType(String wType)
+	{
+		wayType= wType;
+	}
+	
 	public long getDestinationNodeId() {
 		return destinationNodeId;
 	}

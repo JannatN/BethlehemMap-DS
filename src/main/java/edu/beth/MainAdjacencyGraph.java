@@ -1,18 +1,4 @@
-//package edu.beth;
-//
-//import java.io.File;
-//import java.io.IOException;
-//import java.util.Hashtable;
-//
-//import javax.xml.parsers.DocumentBuilder;
-//import javax.xml.parsers.DocumentBuilderFactory;
-//import javax.xml.parsers.ParserConfigurationException;
-//
-//import org.geotools.referencing.GeodeticCalculator;
-//import org.w3c.dom.Document;
-//import org.w3c.dom.Element;
-//import org.w3c.dom.NodeList;
-//import org.xml.sax.SAXException;
+
 package edu.beth;
 
 import java.io.File;
@@ -40,13 +26,12 @@ public class MainAdjacencyGraph {
 		String pathname = "C:\\Users\\ncc\\Downloads\\map.osm";
 		Graph graph = createGraph(pathname);
 		Dijkestra d = new Dijkestra();
-		Json j = new Json();
+		Json json = new Json();
 		Path path = d.shortestPath(graph, 5307143378L, 925169405);
+		String j = json.toJson(graph, path);
+		System.out.println(j);
 		System.out.println("number of nodes " + graph.getNumberOfNodes());
 		System.out.println("number of edges " + graph.getNumberOfEdges());
-		String json1 = j.json(graph, path);
-		System.out.println(json1);
-
 	}
 
 	public static Graph createGraph(String pathname) throws ParserConfigurationException, SAXException, IOException {
@@ -111,7 +96,7 @@ public class MainAdjacencyGraph {
 		return 30;
 	}
 
-	private static double calculateDistance(double srcLon, double srcLat, double dstLon, double dstLat) {
+	public static double calculateDistance(double srcLon, double srcLat, double dstLon, double dstLat) {
 		GeodeticCalculator calculator = new GeodeticCalculator();
 		calculator.setStartingGeographicPoint(srcLon, srcLat);
 		calculator.setDestinationGeographicPoint(dstLon, dstLat);
